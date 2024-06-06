@@ -1,0 +1,2 @@
+FLASK_APP=ndrabot
+FLASK_DEBUG=1
