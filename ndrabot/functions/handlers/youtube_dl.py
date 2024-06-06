@@ -9,7 +9,6 @@ def youtube_dl(link, number):
     yt = YouTube(link)
     title = yt.title
     caption = f"{title} | {link}"
-    b64data = "" # This will contain large Base64 data depending on the video
 
     video = yt.streams.filter(progressive=True).get_highest_resolution()
     if not video:
@@ -17,15 +16,21 @@ def youtube_dl(link, number):
         return False
 
     send_message(number, "Memulai pengunduhan video...")
+
     # Temporary buffer to store video data
     # NOTE: If the video size is huge, we'll be damned.
     with BytesIO() as file:
         # Save video
         video.stream_to_buffer(file)
         file.seek(0)
-        b64data = b64encode(file.getvalue()).decode()
 
-    req = send_video(number, video.mime_type, b64data, video.default_filename, caption)
-    if not req:
-        send_message(number, "Gagal mengunduh video! Harap coba lagi.")
-    return req
+        req = send_video(
+            number,
+            video.mime_type,
+            b64encode(file.getvalue()).decode(),
+            video.default_filename,
+            caption
+        )
+        if not req:
+            send_message(number, "Gagal mengunduh video! Harap coba lagi.")
+        return req
