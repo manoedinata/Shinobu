@@ -1,5 +1,7 @@
 import requests
 
+from ndrabot.config import WWEB_API_SENDMESSAGE_ENDPOINT
+
 def unknown_command(number):
     print(" Unknown command ")
     req = requests.post("http://localhost:3000/client/sendMessage/ndrabot", json={
@@ -13,7 +15,7 @@ def unknown_command(number):
 
 def send_hi(number):
     print(" Hellllooooo ")
-    req = requests.post("http://localhost:3000/client/sendMessage/ndrabot", json={
+    req = requests.post(WWEB_API_SENDMESSAGE_ENDPOINT, json={
         "chatId": number,
         "contentType": "string",
         "content": "Halo! Aku ndraBot, asisten pribadi Hendra Manudinata."

@@ -1,5 +1,7 @@
 import requests
 
+from ndrabot.config import WWEB_API_SENDMESSAGE_ENDPOINT
+
 def get_quote(body, number):
     if body[0] != "/quote": return False
 
@@ -10,7 +12,7 @@ def get_quote(body, number):
     quote += "\n\n"
     quote += f"─ {req['author']}"
 
-    req = requests.post("http://localhost:3000/client/sendMessage/ndrabot", json={
+    req = requests.post(WWEB_API_SENDMESSAGE_ENDPOINT, json={
         "chatId": number,
         "contentType": "string",
         "content": quote

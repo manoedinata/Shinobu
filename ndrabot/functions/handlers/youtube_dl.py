@@ -3,6 +3,8 @@ from pytube import YouTube
 from io import BytesIO
 from base64 import b64encode
 
+from ndrabot.config import WWEB_API_SENDMESSAGE_ENDPOINT
+
 def youtube_dl(link, number):
     yt = YouTube(link)
     title = yt.title
@@ -21,7 +23,7 @@ def youtube_dl(link, number):
         file.seek(0)
         b64data = b64encode(file.getvalue()).decode()
 
-    req = requests.post("http://localhost:3000/client/sendMessage/ndrabot", json={
+    req = requests.post(WWEB_API_SENDMESSAGE_ENDPOINT, json={
         "chatId": number,
         "contentType": "MessageMedia",
         "content": {
