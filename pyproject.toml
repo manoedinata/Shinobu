@@ -1,0 +1,18 @@
+[tool.poetry]
+name = "ndrabot"
+version = "0.1.0"
+description = "Bot WhatsApp pribadi"
+authors = ["Hendra Manudinata <manoedinata@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+flask = "^3.0.3"
+requests = "^2.32.3"
+tldextract = "^5.1.2"
+pytube = "^15.0.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
