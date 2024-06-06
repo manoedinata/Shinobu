@@ -1,6 +1,6 @@
 import requests
 
-from ndrabot.config import WWEB_API_SENDMESSAGE_ENDPOINT
+from ndrabot.utils.messages import send_message
 
 def dad_joke(body, number):
     if body[0] not in ["/dadjoke", "/dadjokes"]: return False
@@ -11,11 +11,5 @@ def dad_joke(body, number):
 
     joke = req['joke']
 
-    req = requests.post(WWEB_API_SENDMESSAGE_ENDPOINT, json={
-        "chatId": number,
-        "contentType": "string",
-        "content": joke
-    })
-    if not req.ok:
-        return False
-    return True
+    req = send_message(number, joke)
+    return req
