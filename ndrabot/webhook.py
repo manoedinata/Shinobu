@@ -5,8 +5,6 @@ from flask import request
 from flask import redirect
 from flask import url_for
 
-import json
-
 from .functions import message
 
 webhook_bp = Blueprint("webhook", __name__)
@@ -21,7 +19,6 @@ def handler():
         return redirect(url_for("webhook.root"))
 
     data = request.json
-    # print(json.dumps(data, indent=4))
 
     # Type: Message
     if data["dataType"] == "message":

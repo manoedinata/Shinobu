@@ -30,10 +30,9 @@ def handle(data: dict):
     if website:
         # YouTube
         if website == "youtube":
-            print(f"YouTube terdeteksi")
             youtube_dl.youtube_dl(link=message[0], number=sender)
         else:
-            print("Website tidak terdeteksi")
+            return False
 
         return True
 

@@ -5,7 +5,6 @@ from ndrabot.config import WWEB_API_SENDMESSAGE_ENDPOINT
 def get_quote(body, number):
     if body[0] != "/quote": return False
 
-    print(" QUOTES ")
     req = requests.get("https://api.quotable.io/random").json()
     quote = ""
     quote += f"*{req['content']}*"

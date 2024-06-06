@@ -12,7 +12,6 @@ def youtube_dl(link, number):
 
     video = yt.streams.filter(progressive=True).get_highest_resolution()
     if not video:
-        print("No video stream found")
         return False
 
     # Temporary buffer to store video data
