@@ -5,5 +5,9 @@ def unknown_command(number):
     return req
 
 def send_hi(number):
-    req = send_message(number, "Halo! Aku ndraBot, asisten pribadi Hendra Manudinata.")
+    req = send_message(
+        number,
+        "Halo! 👋 \n" + \
+        "Aku *ndraBot*, asisten pribadi buatan Hendra Manudinata."
+    )
     return req
