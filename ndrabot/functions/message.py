@@ -2,6 +2,7 @@ from ndrabot.functions.handlers import defaults
 from ndrabot.functions.handlers import quotes
 from ndrabot.functions.handlers import dadjoke
 from ndrabot.functions.handlers import youtube_dl
+from ndrabot.functions.handlers import instagram_dl
 
 from ndrabot.utils.detect_website import detect_website
 
@@ -36,6 +37,8 @@ def handle(data: dict):
         # YouTube
         if website == "youtube":
             youtube_dl.youtube_dl(link=message[0], number=sender)
+        elif website == "instagram":
+            instagram_dl.instagram_dl(link=message[0], number=sender)
         else:
             return False
 

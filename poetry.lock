@@ -196,6 +196,22 @@ files = [
 ]
 
 [[package]]
+name = "instaloader"
+version = "4.11"
+description = "Download pictures (or videos) along with their captions and other metadata from Instagram."
+optional = false
+python-versions = ">=3.8"
+files = [
+    {file = "instaloader-4.11.tar.gz", hash = "sha256:7478a1f0ed5c05911832c50cb19747243a461b5d434907f9fdb7d2d750d1b4f5"},
+]
+
+[package.dependencies]
+requests = ">=2.4"
+
+[package.extras]
+browser-cookie3 = ["browser_cookie3 (>=0.19.1)"]
+
+[[package]]
 name = "itsdangerous"
 version = "2.2.0"
 description = "Safely pass data to untrusted environments and back."
@@ -410,4 +426,4 @@ watchdog = ["watchdog (>=2.3)"]
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.10"
-content-hash = "ddca51c238c0fdab0cec16fee25fd3593f14b1944efdfedcd9ef075d2ea4179a"
+content-hash = "ec31f2b54fd31f925f4ed23ae3e01400df03c72f62342980b6fcd8de5b6eed29"
