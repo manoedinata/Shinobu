@@ -40,3 +40,21 @@ def send_media(
         return False
 
     return True
+
+def send_media_from_url (
+    number: str,
+    url: str,
+    caption: str = "",
+    ):
+    req = requests.post(WWEB_API_SENDMESSAGE_ENDPOINT, json={
+        "chatId": number,
+        "contentType": "MessageMediaFromURL",
+        "content": url,
+        "options": {
+            "caption": caption
+        }
+    })
+    if not req.ok:
+        return False
+
+    return True

@@ -1,20 +1,20 @@
 from pytube import YouTube
-from io import BytesIO
-from base64 import b64encode
 
 from ndrabot.config import NDRABOT_MAX_ATTACHMENT
 
 from ndrabot.utils.messages import send_message
-from ndrabot.utils.messages import send_media
+from ndrabot.utils.messages import send_media_from_url
 
 def youtube_dl(link, number):
+    send_message(number, "Mengambil metadata video...")
+
     yt = YouTube(link)
     title = yt.title
     caption = f"{title} | {link}"
 
     video = yt.streams.filter(progressive=True).get_highest_resolution()
     if not video:
-        send_message(number, "Video tidak ditemukan!")
+        send_message(number, "Video tidak ditemukan! Cek kembali URL Anda.")
         return False
 
     # Limit file size
@@ -25,22 +25,15 @@ def youtube_dl(link, number):
             f"Batas ukuran video: {NDRABOT_MAX_ATTACHMENT // 1024000} MB.")
         return False
 
-    send_message(number, "Memulai pengunduhan video...")
+    send_message(number, "Memulai pengunduhan video, mohon menunggu...")
 
-    # Temporary buffer to store video data
-    # NOTE: If the video size is huge, we'll be damned.
-    with BytesIO() as file:
-        # Save video
-        video.stream_to_buffer(file)
-        file.seek(0)
-
-        req = send_media(
-            number,
-            video.mime_type,
-            b64encode(file.getvalue()).decode(),
-            video.default_filename,
-            caption
-        )
-        if not req:
-            send_message(number, "Gagal mengunduh video! Harap coba lagi.")
-        return req
+    # Get and directly send video URL
+    url = video.url
+    req = send_media_from_url(
+        number,
+        url,
+        caption
+    )
+    if not req:
+        send_message(number, "Gagal mengunduh video! Harap coba lagi.")
+    return req
