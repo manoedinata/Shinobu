@@ -6,7 +6,11 @@ import re
 from ndrabot.utils.messages import send_message
 from ndrabot.utils.messages import send_media_from_url
 
+from ndrabot.config import INSTALOADER_SESSION_USERNAME
+from ndrabot.config import INSTALOADER_SESSION_BASE64
+
 loader = Instaloader()
+loader.load_session(INSTALOADER_SESSION_USERNAME, INSTALOADER_SESSION_BASE64)
 
 def instagram_dl(link, number):
     send_message(number, "Memulai pengunduhan postingan, mohon menunggu...")
