@@ -1,8 +1,9 @@
 from os import environ 
 from dotenv import load_dotenv
 
-# Load dotenv
-load_dotenv(".env")
+if not environ.get("ENV"):
+    # Load dotenv if not using environment variable
+    load_dotenv(".env")
 
 # WhatsApp-Web API
 WWEB_API_URL = environ.get("WWEB_API_URL")
