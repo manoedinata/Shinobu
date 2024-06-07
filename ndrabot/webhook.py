@@ -6,6 +6,7 @@ from flask import redirect
 from flask import url_for
 
 from .functions import message
+from .functions import media
 
 webhook_bp = Blueprint("webhook", __name__)
 
@@ -26,5 +27,14 @@ def handler():
             message.handle(data=data["data"]["message"])
         ]):
             return "Unhandled response; returning OK..."
+        return "OK. Handled."
     
+    # Type: Media
+    elif data["dataType"] == "media":
+        if not any([
+            media.handle(media=data["data"]["messageMedia"], data=data["data"]["message"])
+        ]):
+            return "Unhandled response; returning OK..."
+        return "OK. Handled."
+
     return "Unknown data type; returning OK..."

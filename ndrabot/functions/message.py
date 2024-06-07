@@ -17,6 +17,11 @@ def handle(data: dict):
         # TODO: We're not supporting group command for now
         return True
 
+    # Check if it's just additional data after image
+    # Check if it has `hasMedia` field
+    if data.get("hasMedia"):
+        return True
+
     # Parse retrieved data
     sender = data["from"]
     message = data["body"].split()

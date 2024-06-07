@@ -5,7 +5,7 @@ from base64 import b64encode
 from ndrabot.config import NDRABOT_MAX_ATTACHMENT
 
 from ndrabot.utils.messages import send_message
-from ndrabot.utils.messages import send_video
+from ndrabot.utils.messages import send_media
 
 def youtube_dl(link, number):
     yt = YouTube(link)
@@ -34,7 +34,7 @@ def youtube_dl(link, number):
         video.stream_to_buffer(file)
         file.seek(0)
 
-        req = send_video(
+        req = send_media(
             number,
             video.mime_type,
             b64encode(file.getvalue()).decode(),
