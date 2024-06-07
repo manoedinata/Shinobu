@@ -11,5 +11,5 @@ def get_quote(body, number):
     quote += "\n\n"
     quote += f"─ {req['author']}"
 
-    req = send_message(quote)
+    req = send_message(number, quote)
     return req
