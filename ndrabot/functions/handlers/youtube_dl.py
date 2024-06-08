@@ -10,9 +10,17 @@ def youtube_dl(link, number):
     send_message(number, "Memulai pengunduhan video, mohon menunggu...")
 
     yt = YouTube(link)
-    video = yt.streams.filter(progressive=True).get_highest_resolution()
-    if not video:
-        send_message(number, "Video tidak ditemukan! Cek kembali URL Anda.")
+    try:
+        video = yt.streams.filter(progressive=True).get_highest_resolution()
+        if not video:
+            send_message(number, "Video tidak ditemukan! Cek kembali URL Anda.")
+            return False
+    except Exception as e:
+        send_message(
+            number,
+            "Gagal mendapatkan informasi video! \n" + \
+            f"*Alasan*: _{str(e)}_"
+        )
         return False
 
     # Build caption
