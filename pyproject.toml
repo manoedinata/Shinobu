@@ -13,6 +13,7 @@ tldextract = "^5.1.2"
 pytube = "^15.0.0"
 python-dotenv = "^1.0.1"
 instaloader = "^4.11"
+gunicorn = "^22.0.0"
 
 
 [build-system]
