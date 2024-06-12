@@ -1,0 +1,13 @@
+services:
+  bot:
+    build: .
+    restart: unless-stopped
+    expose:
+      - "8000"
+    environment:
+      - ENV=${ENV}
+      - WWEB_API_URL=${WWEB_API_URL}
+      - WWEB_API_SESSION_NAME=${WWEB_API_SESSION_NAME}
+      - NDRABOT_MAX_ATTACHMENT=${NDRABOT_MAX_ATTACHMENT}
+      - INSTALOADER_SESSION_USERNAME=${INSTALOADER_SESSION_USERNAME}
+      - INSTALOADER_SESSION_BASE64=${INSTALOADER_SESSION_BASE64}
