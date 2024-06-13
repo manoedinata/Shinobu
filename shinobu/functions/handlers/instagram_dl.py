@@ -12,12 +12,8 @@ from shinobu.config import INSTALOADER_SESSION_BASE64
 loader = Instaloader()
 loader.load_session(INSTALOADER_SESSION_USERNAME, INSTALOADER_SESSION_BASE64)
 
-def instagram_dl(link, number, message_id):
-    send_message(
-        number,
-        "Memulai pengunduhan postingan, mohon menunggu...",
-        reply=True, message_id=message_id
-    )
+def instagram_dl(link, number):
+    send_message(number, "Memulai pengunduhan postingan, mohon menunggu...")
 
     # Filter link to shortcode
     shortcode = re.search("^(?:.*\/p\/)([\d\w\-_]+)", link).group(1)
@@ -29,8 +25,7 @@ def instagram_dl(link, number, message_id):
             number,
             "Gagal mendapatkan data. Mungkin bot " + \
             "terblokir Instagram. \n" + \
-            "Coba nanti, ya.",
-            reply=True, message_id=message_id
+            "Coba nanti, ya."
         )
         return False
 

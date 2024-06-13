@@ -1,8 +1,8 @@
 from shinobu.utils.messages import send_message
 from shinobu.utils.messages import send_media
 
-def image2sticker(data, mimetype, caption, number):
-    send_message(number, "Memproses stiker...")
+def image2sticker(data, mimetype, caption, number, message_id):
+    send_message(number, "Memproses stiker...", reply=True, message_id=message_id)
 
     req = send_media(
         number,
@@ -10,6 +10,8 @@ def image2sticker(data, mimetype, caption, number):
         data,
         "",
         as_sticker=True,
-        stickerName=caption
+        stickerName=caption,
+        reply=True,
+        message_id=message_id
     )
     return req

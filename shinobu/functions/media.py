@@ -2,6 +2,7 @@ from shinobu.functions.handlers import sticker
 
 def handle(media: dict, data: dict):
     # Parse retrieved data
+    messageId = data["id"]["id"]
     sender = data["from"]
     caption = data["body"]
 
@@ -9,4 +10,4 @@ def handle(media: dict, data: dict):
     mimetype = media["mimetype"]
 
     # Media to sticker
-    sticker.image2sticker(b64data, mimetype, caption, sender)
+    sticker.image2sticker(b64data, mimetype, caption, sender, messageId)
