@@ -13,6 +13,7 @@ def handle(data: dict):
         return True
 
     # Parse retrieved data
+    messageId = data["id"]["id"]
     sender = data["from"]
     message = data["body"].split()
 
@@ -37,12 +38,12 @@ def handle(data: dict):
     if message[0].startswith("/"):
         if not any([
             # Quote
-            quotes.get_quote(body=message, number=sender),
+            quotes.get_quote(body=message, number=sender, message_id=messageId),
             # Dad joke
-            dadjoke.dad_joke(body=message, number=sender)
+            dadjoke.dad_joke(body=message, number=sender, message_id=messageId)
         ]):
             # Command not found
-            return defaults.unknown_command(number=sender)
+            return defaults.unknown_command(number=sender, message_id=messageId)
 
         # Everything seems to be successfully handled
         return True

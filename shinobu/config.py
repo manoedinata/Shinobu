@@ -11,6 +11,7 @@ if not environ.get("ENV"):
 WWEB_API_URL = environ.get("WWEB_API_URL")
 WWEB_API_SESSION_NAME = environ.get("WWEB_API_SESSION_NAME")
 WWEB_API_SENDMESSAGE_ENDPOINT = f"{WWEB_API_URL}/client/sendMessage/{WWEB_API_SESSION_NAME}"
+WWEB_API_REPLYMESSAGE_ENDPOINT = f"{WWEB_API_URL}/message/reply/{WWEB_API_SESSION_NAME}"
 
 # Max attachment size allowed
 MAX_ATTACHMENT = int(environ.get("MAX_ATTACHMENT"))
