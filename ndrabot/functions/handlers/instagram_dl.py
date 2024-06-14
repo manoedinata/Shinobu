@@ -43,4 +43,10 @@ def instagram_dl(link, number):
         )
         if not req:
             return False
+
+    caption = post.caption
+    caption += "\n\n"
+    caption += f"🔗 {link}"
+    send_message(number, caption)
+
     return True
