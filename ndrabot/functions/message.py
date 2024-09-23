@@ -6,8 +6,6 @@ from ndrabot.functions.handlers import instagram_dl
 
 from ndrabot.utils.detect_website import detect_website
 
-from ndrabot.config import INSTALOADER_SESSION_BASE64
-
 def handle(data: dict):
     # Check if message is from me
     # If yes: Skip ahead
@@ -39,8 +37,7 @@ def handle(data: dict):
         # YouTube
         if website == "youtube":
             youtube_dl.youtube_dl(link=message[0], number=sender)
-        # Instagram (only if activated)
-        elif website == "instagram" and INSTALOADER_SESSION_BASE64:
+        elif website == "instagram":
             instagram_dl.instagram_dl(link=message[0], number=sender)
         else:
             return False
