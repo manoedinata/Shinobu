@@ -21,6 +21,21 @@ def handler():
 
     data = request.json
 
+    # Ignore empty data
+    if not "message" in data["data"].keys():
+        return "Skipping empty data."
+
+    # Check if message is from me
+    # If yes: Skip ahead
+    if data["data"]["message"]["fromMe"]:
+        return "Skipping unneeded data from bot."
+
+    # Check if sent from group
+    # Just check if the data has "author" field in it
+    if "author" in data["data"].keys() and data["data"]["message"].get("author"):
+        # TODO: We're not supporting group command for now
+        return "Skipping commands from group."
+
     # Type: Message
     if data["dataType"] == "message":
         if not any([

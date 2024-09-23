@@ -7,17 +7,6 @@ from ndrabot.functions.handlers import instagram_dl
 from ndrabot.utils.detect_website import detect_website
 
 def handle(data: dict):
-    # Check if message is from me
-    # If yes: Skip ahead
-    if data.get("fromMe"):
-        return True
-
-    # Check if sent from group
-    # Just check if the data has "author" field in it
-    if data.get("author"):
-        # TODO: We're not supporting group command for now
-        return True
-
     # Check if it's just additional data after image
     # Check if it has `hasMedia` field
     if data.get("hasMedia"):
