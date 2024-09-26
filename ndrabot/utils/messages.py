@@ -8,9 +8,7 @@ def send_message(number: str, text: str):
         "contentType": "string",
         "content": text
     })
-    if not req.ok:
-        return False
-    return True
+    return req.ok
 
 def send_media(
     number: str,
@@ -36,10 +34,7 @@ def send_media(
             "stickerName": caption if caption else stickerName
         }
     })
-    if not req.ok:
-        return False
-
-    return True
+    return req.ok
 
 def send_media_from_url (
     number: str,
@@ -54,7 +49,4 @@ def send_media_from_url (
             "caption": caption
         }
     })
-    if not req.ok:
-        return False
-
-    return True
+    return req.ok

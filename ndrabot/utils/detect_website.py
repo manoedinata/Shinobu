@@ -15,4 +15,5 @@ def detect_website(url):
         if domain in domains:
             return site
 
+    # No detected site
     return None
