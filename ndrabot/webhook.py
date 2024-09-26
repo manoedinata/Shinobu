@@ -8,16 +8,12 @@ from flask import url_for
 from .functions import message
 from .functions import media
 
-webhook_bp = Blueprint("webhook", __name__)
+webhook_bp = Blueprint("webhook", __name__, url_prefix="/webhook")
 
-@webhook_bp.get("/")
-def root():
-    return "Halo, dunia!"
-
-@webhook_bp.route("/webhook", methods=["GET", "POST"])
+@webhook_bp.route("/", methods=["GET", "POST"])
 def handler():
     if request.method == "GET":
-        return redirect(url_for("webhook.root"))
+        return redirect(url_for("webui.root"))
 
     data = request.json
 
