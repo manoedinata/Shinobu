@@ -1,0 +1,94 @@
+{% extends 'base.html' %}
+
+{% block title %}
+  Beranda
+{% endblock %}
+
+{% block content %}
+  <!-- Status & QR -->
+  <div id="status">
+    <div class="container">
+      <div class="row">
+        {% if connected[0] %}
+          <div class="col-12 mt-3">
+            <div class="card">
+              <div class="card-header">Status</div>
+              <div class="card-body">
+                <h5 class="card-title">Terhubung 😁</h5>
+                <div class="card-text">
+                  <ul>
+                    <li>
+                      Nama: <strong>{{ sessionInfo["pushname"] }}</strong>
+                    </li>
+                    <li>
+                      Nomor: <strong>{{ sessionInfo["me"]["user"] }}</strong>
+                      <ul>
+                        <li>
+                          Serialized: {{ sessionInfo["me"]["_serialized"] }}
+                        </li>
+                      </ul>
+                    </li>
+                  </ul>
+
+                  <form action="{{ url_for('webui.stop' ) }}" method="post">
+                    <button type="submit" class="btn btn-danger">
+                      Hentikan Sesi
+                    </button>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        {% else %}
+          <div class="col-12 col-lg-6 mt-3">
+            <div class="card">
+              <div class="card-header">Status</div>
+              <div class="card-body">
+                <h5 class="card-title">Tidak Terhubung 😓</h5>
+                <div class="card-text">
+                  <p>Alasan: <strong>{{ connected[1] }}</strong></p>
+
+                  {% if connected[1] == "session_not_found" %}
+                    <form action="{{ url_for('webui.start' ) }}" method="post">
+                      <button type="submit" class="btn btn-success">
+                        Mulai sesi
+                      </button>
+                    </form>
+                  {% endif %}
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {% if connected[1] != "session_not_found" %}
+            <div class="col-12 col-lg-6 mt-3">
+              <div class="card">
+                <div class="card-header">QR Code</div>
+                <div class="card-body">
+                  {% if qr %}
+                    <div id="qrcode"></div>
+                    <script>
+                      var qrcode = new QRCode(
+                        document.getElementById("qrcode"),
+                        {
+                          text: "{{qr}}",
+                          width: 200,
+                          height: 200,
+                          colorDark: "#000000",
+                          colorLight: "#ffffff",
+                          correctLevel: QRCode.CorrectLevel.H,
+                        },
+                      );
+                    </script>
+                  {% else %}
+                    QR belum siap.
+                  {% endif %}
+                </div>
+              </div>
+            </div>
+          {% endif %}
+        {% endif %}
+      </div>
+    </div>
+  </div>
+{% endblock %}
