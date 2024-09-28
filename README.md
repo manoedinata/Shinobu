@@ -1,0 +1,3 @@
+# Shinobu
+
+Bot WhatsApp pribadi.

@@ -1,10 +1,10 @@
 from pytube import YouTube
 from datetime import timedelta
 
-from ndrabot.config import NDRABOT_MAX_ATTACHMENT
+from shinobu.config import MAX_ATTACHMENT
 
-from ndrabot.utils.messages import send_message
-from ndrabot.utils.messages import send_media_from_url
+from shinobu.utils.messages import send_message
+from shinobu.utils.messages import send_media_from_url
 
 def youtube_dl(link, number):
     send_message(number, "Memulai pengunduhan video, mohon menunggu...")
@@ -32,11 +32,11 @@ def youtube_dl(link, number):
         f"🔗 Link: {yt.watch_url}"
 
     # Limit file size
-    if video.filesize_approx > NDRABOT_MAX_ATTACHMENT:
+    if video.filesize_approx > MAX_ATTACHMENT:
         send_message(
             number,
             "Maaf, video terlalu besar untuk diunduh. Coba video lain. \n" + \
-            f"Batas ukuran video: {NDRABOT_MAX_ATTACHMENT // 1024000} MB.")
+            f"Batas ukuran video: {MAX_ATTACHMENT // 1024000} MB.")
         return False
 
     # Get and directly send video URL

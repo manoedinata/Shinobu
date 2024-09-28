@@ -1,6 +1,6 @@
 import requests
 
-from ndrabot.utils.messages import send_message
+from shinobu.utils.messages import send_message
 
 def get_quote(body, number):
     if body[0] != "/quote": return False

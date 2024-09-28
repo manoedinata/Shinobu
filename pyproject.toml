@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "ndrabot"
+name = "shinobu"
 version = "0.1.0"
 description = "Bot WhatsApp pribadi"
 authors = ["Hendra Manudinata <manoedinata@gmail.com>"]

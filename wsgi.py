@@ -2,7 +2,7 @@
 # via WSGI. For local development, use:
 #  $ flask run
 
-from ndrabot import create_app
+from shinobu import create_app
 from werkzeug.middleware.proxy_fix import ProxyFix
 
 # Initialize app for Gunicorn

@@ -1,4 +1,4 @@
-# ndraBot Webhook handler
+# Shinobu Webhook handler
 
 from flask import Blueprint
 from flask import request

@@ -3,11 +3,11 @@ from instaloader import Post
 from instaloader.exceptions import ConnectionException
 import re
 
-from ndrabot.utils.messages import send_message
-from ndrabot.utils.messages import send_media_from_url
+from shinobu.utils.messages import send_message
+from shinobu.utils.messages import send_media_from_url
 
-from ndrabot.config import INSTALOADER_SESSION_USERNAME
-from ndrabot.config import INSTALOADER_SESSION_BASE64
+from shinobu.config import INSTALOADER_SESSION_USERNAME
+from shinobu.config import INSTALOADER_SESSION_BASE64
 
 loader = Instaloader()
 loader.load_session(INSTALOADER_SESSION_USERNAME, INSTALOADER_SESSION_BASE64)

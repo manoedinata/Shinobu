@@ -26,4 +26,4 @@ jobs:
         uses: docker/build-push-action@v5
         with:
           push: true
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/ndrabot-new:${{ github.ref_name }}
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/shinobu:${{ github.ref_name }}

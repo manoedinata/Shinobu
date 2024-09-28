@@ -1,6 +1,6 @@
 import requests
 
-from ndrabot.config import WWEB_API_SENDMESSAGE_ENDPOINT
+from shinobu.config import WWEB_API_SENDMESSAGE_ENDPOINT
 
 def send_message(number: str, text: str):
     req = requests.post(WWEB_API_SENDMESSAGE_ENDPOINT, json={
@@ -17,7 +17,7 @@ def send_media(
     filename: str,
     caption: str = "",
     as_sticker: bool = False,
-    stickerName: str = "ndraBot's Media to Sticker",
+    stickerName: str = "Shinobu's Media to Sticker",
     ):
     req = requests.post(WWEB_API_SENDMESSAGE_ENDPOINT, json={
         "chatId": number,
@@ -30,7 +30,7 @@ def send_media(
         "options": {
             "caption": caption,
             "sendMediaAsSticker": as_sticker,
-            "stickerAuthor": "ndraBot",
+            "stickerAuthor": "Shinobu",
             "stickerName": caption if caption else stickerName
         }
     })

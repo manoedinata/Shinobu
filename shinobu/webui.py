@@ -1,4 +1,4 @@
-# ndraBot Web UI handler
+# Shinobu Web UI handler
 
 from flask import Blueprint
 

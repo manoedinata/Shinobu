@@ -1,5 +1,5 @@
-from ndrabot.utils.messages import send_message
-from ndrabot.utils.messages import send_media
+from shinobu.utils.messages import send_message
+from shinobu.utils.messages import send_media
 
 def image2sticker(data, mimetype, caption, number):
     send_message(number, "Memproses stiker...")

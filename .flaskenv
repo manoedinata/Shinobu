@@ -1,2 +1,2 @@
-FLASK_APP=ndrabot
+FLASK_APP=shinobu
 FLASK_DEBUG=1

@@ -1,4 +1,4 @@
-from ndrabot.functions.handlers import sticker
+from shinobu.functions.handlers import sticker
 
 def handle(media: dict, data: dict):
     # Parse retrieved data

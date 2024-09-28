@@ -1,10 +1,10 @@
-from ndrabot.functions.handlers import defaults
-from ndrabot.functions.handlers import quotes
-from ndrabot.functions.handlers import dadjoke
-from ndrabot.functions.handlers import youtube_dl
-from ndrabot.functions.handlers import instagram_dl
+from shinobu.functions.handlers import defaults
+from shinobu.functions.handlers import quotes
+from shinobu.functions.handlers import dadjoke
+from shinobu.functions.handlers import youtube_dl
+from shinobu.functions.handlers import instagram_dl
 
-from ndrabot.utils.detect_website import detect_website
+from shinobu.utils.detect_website import detect_website
 
 def handle(data: dict):
     # Check if it's just additional data after image
@@ -49,4 +49,4 @@ def handle(data: dict):
 
     # Make `send_hi()` function as the last resort.
     # In case the sent command from user isn't recognized: Say hi.
-    defaults.send_hi(number=sender)
+    defaults.send_hi(body="".join(message).strip(), number=sender)
